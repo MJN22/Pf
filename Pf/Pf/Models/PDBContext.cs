@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Pf
+namespace Pf.Models
 {
     public partial class PDBContext : DbContext
     {

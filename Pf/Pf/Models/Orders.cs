@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Pf
+namespace Pf.Models
 {
     public partial class Orders
     {
