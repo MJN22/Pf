@@ -163,3 +163,10 @@ namespace Pf.Controllers
         }
     }
 }
+
+        //[HttpGet, ActionName("OrderFindAllHistoryLocation")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> OrderFindAllHistoryLocation(UserLocation User)
+        //{
+        //    //var orders = await _context.Query.locationId == locationId;
+        //    var ordersreturn = await _context.UserLocation
