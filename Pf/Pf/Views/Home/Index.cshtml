@@ -1,8 +1,30 @@
 ﻿@{
+    @model Users
     ViewData["Title"] = "Home Page";
-}
+    }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="col-lg-4">
+    <div class="card bg-primary text-center card-form">
+        <div class="card-body">
+            <h3>Login Or Create User </h3>
+            <p>Fill in the fields below then select the button to etiher login or create a new user</p>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-lg" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="Zip Code">
+                </div>
+                <input type="submit" value="Login" class="btn btn-outline-light btn-block">
+                <input type="submit" value="Create New User" class="btn btn-success btn-block">
+            </form>
+        </div>
+    </div>
 </div>
