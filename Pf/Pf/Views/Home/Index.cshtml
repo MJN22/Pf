@@ -2,111 +2,122 @@
     @model Pf.Models.Users
     ViewData["Title"] = "Home Page";
 }
-<div class=" col-md-12">
+@*<div>
     <div class="col-md-6"> <BUTTON class="btn-toolbar"></BUTTON></div>
-    <div class="col-md-6"> <button class=" btn-success"></button> </div>
-</div>
+    <div class="col-md-6"> <button class="btn-dark" onclick="b"></button> </div>
+</div>*@
 
 @*@Html.EditorFor(form id = "createHome",
 
-  new { htmlAttributes = new { @class="myCssClass", style="Width:100px" } })*@
-<div><form id="createHome" asp-controller="Users" asp-action="Create" method="post" class="card bg-primary text-center card-form">
-    <Label>FirstName:</Label><input asp-for="FirstName" /> <br />
-    LastName:  <input asp-for="LastName" /> <br />
-    Zip Code: <input asp-for="UserLocation" /><br />
-    @*Password: <input asp-for="Password" /><br />*@
-    <button type="submit"> Create user</button>
-</form> 
-</div>
-}
+    new { htmlAttributes = new { @class="myCssClass", style="Width:100px" } })*@
 
-<div><form id="LoginHome" asp-controller="Users" asp-action="Find" method="get" class="card bg-primary text-center card-form">
-    <Label>FirstName:</Label><input asp-for="FirstName" /> <br />
-    LastName:  <input asp-for="LastName" /> <br />
-    Zip Code: <input asp-for="UserLocation" /><br />
-    @*Password: <input asp-for="Password" /><br />*@
-    <button type="submit"> Login</button>
-</form>
-</div>
-
-@*@using (Html.BeginRouteForm("Create", "Users", FormMethod.Post))
-    {
-        @Html.TextBoxFor(model => Model.FirstName)
-        @Html.TextBoxFor(model => Model.LastName)
-        @Html.TextBoxFor(model => Model.UserLocation)
-    }*@
-@*<form asp-controller="Users" asp-action="Create" method="post" class="card bg-primary text-center card-form">
-    <Label>FirstName:</Label><input asp-for="FirstName" /> <br />
-    LastName:  <input asp-for="LastName" /> <br />
-    Zip Code: <input asp-for="UserLocation" /><br />
-    @*Password: <input asp-for="Password" /><br />*@
-
-@*<form asp-controller="Users" asp-action="Create" method="post">
-        First Name: <input asp-for="E /> <br />
+@*<div><form id="createHome" asp-controller="Users" asp-action="Create" method="post" class="card bg-primary text-center card-form">
+        <Label>FirstName:</Label><input asp-for="FirstName" /> <br />
+        LastName:  <input asp-for="LastName" /> <br />
+        Zip Code: <input asp-for="UserLocation" /><br />
         Password: <input asp-for="Password" /><br />
-        <button type="submit">Register</button>
-    </form>*@
-
+        <button type="submit"> Create user</button>
+    </form>
+    </div>
+    }*@
 <div class="col-lg-4">
     <div class="card bg-primary text-center card-form">
         <div class="card-body">
-            <h3>Login Or Create User </h3>
-            <p>Fill in the fields below then select the button to etiher login or create a new user</p>
-            <form>
-                <div class="form-group">
-                    <input type="text" class="id=fn form-control form-control-lg" placeholder="First Name">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="id=ln form-control form-control-lg" placeholder="Last Name">
-                </div>
-                <div class="form-group">
-                    <input type="password" class=" ln=pw form-control form-control-lg" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="id=zc form-control form-control-lg" placeholder="Zip Code">
-                </div>
 
-                <input type="submit" value="Login" class="btn btn-outline-light btn-block">
-                <input type="submit" value="Create New User" class="btn btn-success btn-block">
+            <form id="LoginHome" asp-controller="Users" asp-action="Find" method="get" class="card bg-primary text-center card-form">
+                <Label>FirstName:</Label><input asp-for="FirstName " /> <br />
+                LastName:  <input asp-for="LastName" /> <br />
+                Zip Code: <input asp-for="UserLocation" /><br />
+                @*Password: <input asp-for="Password" /><br />*@
+                <button type="submit" asp-page=""> Login</button>
             </form>
+            <div>
+                <input type="button" id="FormManager" name="FormManager" value="Create a User" class="btn-success col-lg-12" onclick="ChangeFormValues()"/>
+            </div>
+            
         </div>
-    </div>
-</div>
-}
-asp-for
-<style>
-    .container {
-        background-color: lightseagreen;
-    }
-</style>
-@*<div class="col-lg-4">
+        </div>
+        @*<div class="form-group">
+            <input type="text" class="form-control form-control-lg" placeholder="Last Name">
+        </div>*@
+        @*@using (Html.BeginRouteForm("Create", "Users", FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => Model.FirstName)
+            @Html.TextBoxFor(model => Model.LastName)
+            @Html.TextBoxFor(model => Model.UserLocation)
+        }*@
+        @*<form asp-controller="Users" asp-action="Create" method="post" class="card bg-primary text-center card-form">
+        <Label>FirstName:</Label><input asp-for="FirstName" /> <br />
+        LastName:  <input asp-for="LastName" /> <br />
+        Zip Code: <input asp-for="UserLocation" /><br />
+        @*Password: <input asp-for="Password" /><br />*@
+
+        @*<form asp-controller="Users" asp-action="Create" method="post">
+            First Name: <input asp-for="E /> <br />
+            Password: <input asp-for="Password" /><br />
+            <button type="submit">Register</button>
+        </form>*@
+
+        @*<div class="col-lg-4">
         <div class="card bg-primary text-center card-form">
             <div class="card-body">
+
                 <h3>Login Or Create User </h3>
                 <p>Fill in the fields below then select the button to etiher login or create a new user</p>
                 <form>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="">
+                        <input type="text" class="id=fn form-control form-control-lg" placeholder="First Name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Last Name">
+                        <input type="text" class="id=ln form-control form-control-lg" placeholder="Last Name">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-lg" placeholder="Password">
+                        <input type="password" class=" ln=pw form-control form-control-lg" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Zip Code">
+                        <input type="text" class="id=zc form-control form-control-lg" placeholder="Zip Code">
                     </div>
 
                     <input type="submit" value="Login" class="btn btn-outline-light btn-block">
                     <input type="submit" value="Create New User" class="btn btn-success btn-block">
-                </form>
+                </form>*@
+    </div>
             </div>
         </div>
-    </div>*@
-<div>
+       
+        <style>
+            .container {
+                background-color: lightseagreen;
+            }
+        </style>
+        @*<div class="col-lg-4">
+            <div class="card bg-primary text-center card-form">
+                <div class="card-body">
+                    <h3>Login Or Create User </h3>
+                    <p>Fill in the fields below then select the button to etiher login or create a new user</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" placeholder="Zip Code">
+                        </div>
+
+                        <input type="submit" value="Login" class="btn btn-outline-light btn-block">
+                        <input type="submit" value="Create New User" class="btn btn-success btn-block">
+                    </form>
+                </div>
+            </div>
+        </div>*@
+        <div>
 
 
-</div>
-<script src="~/js/Home.js" asp-append-version="true"></script>
+        </div>
+        <script src="~/js/Home.js" asp-append-version="true"></script>
 
