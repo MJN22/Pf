@@ -32,17 +32,20 @@
 <h5>@Model.LastName</h5>
 <h5>@Model.Id</h5>
 <h5>@Model.UserLocation</h5>*@
-<div class="col-lg-auto">
+@*<div class="col-lg-auto">*@
+<div class="container-fluid">
+
     <div class="card bg-primary text-center card-form">
-        <div class="card-body">
-                        <form id="LoginHome" asp-controller="Users" asp-action="Index" method="get" class="card bg-primary text-center card-form">
-                <Label>FirstName:</Label><input asp-for="FirstName " /> <br />
-                Password: <input asp-for="Password" /><br />
-                <button type="submit" asp-page=""> Login</button>
+        <div class="card-body ">
+            <form id="LoginHome" asp-controller="Users" asp-action="Index" method="get" class="card bg-primary text-center card-form">
+                <Label>User Name:</Label><input class="form-control form-control-lg" asp-for="UserName " /> <br />
+                Password: <input class="form-control form-control-lg" asp-for="Password" /><br />
+                <button type="submit" class="btn btn-outline-light btn-block" asp-page=""> Login</button>
+                <div>
+                    <input type="button" id="FormManager" name="FormManager" value="Create a UserName" class="btn btn-outline-warning btn-outline-success btn-block" onclick="ChangeFormValues()" />
+                </div>
             </form>
-            <div>
-                <input type="button" id="FormManager" name="FormManager" value="Create a User" class="btn-success col-lg-12" onclick="ChangeFormValues()"/>
-            </div>
+           
             
         </div>
         </div>
@@ -124,9 +127,27 @@
                 </div>
             </div>
         </div>*@
-        <div>
+        <div id="loginMap" class= "container-fluid">
+            @* come back and inherit width and height from parent
+        will come back and do this better later https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+            *@
+            <div class="mapouter">
+                <div class="gmap_canvas"><iframe width="750" height="764" id="gmap_canvas" src="https://maps.google.com/maps?q=TEXAS%20ARLINGTON&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+                <style>
+                    .mapouter {
+                        text-align: right;
+                        height: 750px;
+                        width: 750px;
+                    }
 
-
+                    .gmap_canvas {
+                        overflow: hidden;
+                        background: none !important;
+                        height: 764px;
+                        width: 750px;
+                    }
+                </style>
+            </div>
         </div>
         <script src="~/js/Home.js" asp-append-version="true"></script>
 

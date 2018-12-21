@@ -14,8 +14,8 @@ namespace Pf.Models
         public int Id { get; set; }
         public int UserLocationId { get; set; }
         public int ShopId { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode= true)]
+        //[DataType(DataType.DateTime)]
+        ////[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode= true)]
         public DateTime OrderTime { get; set; }
         public double TotalDue { get; set; }
 
