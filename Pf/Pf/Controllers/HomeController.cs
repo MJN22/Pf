@@ -12,6 +12,17 @@ namespace Pf.Controllers
     {
         public IActionResult Index()
         {
+			//var Person = new Users();
+
+				
+
+			ViewData["x"] = "a wild string has appeared";
+			ViewData["user"] = new Users()
+			{
+				FirstName = "bob",
+				LastName = "Johnson",
+			};
+
             return View();
         }
 

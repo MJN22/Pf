@@ -28,7 +28,7 @@ namespace Pf.Models
             if (!optionsBuilder.IsConfigured)
             {
 
-                Console.WriteLine(  "please configt options");
+				Console.WriteLine("setup option builder");
             }
         }
 
@@ -189,7 +189,15 @@ namespace Pf.Models
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(100);
-            });
+
+                entity.Property(e => e.Password)
+									.IsRequired()
+									.HasMaxLength(55);
+
+							entity.Property(e => e.UserName)
+									.IsRequired()
+									.HasMaxLength(100);
+						});
         }
     }
 }

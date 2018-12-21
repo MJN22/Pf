@@ -53,7 +53,7 @@ namespace Pf.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName")] Users users)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Password")] Users users)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Pf.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Password")] Users users)
         {
             if (id != users.Id)
             {
@@ -115,39 +115,6 @@ namespace Pf.Controllers
             return View(users);
         }
 
-        [HttpGet]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> FindbyName(string FirstName, [Bind("id","FirstName,LastName")] Users users)
-        {
-            //await _context.Users.ToListAsync().Where;
-
-            //if (FirstName && LastName != "")
-            ////{
-            ////    return NotFound();4
-            ////}
-            ///
-            
-            await _context.Users.SingleOrDefaultAsync(u => u.FirstName == FirstName);
-            if(_context.Users== null)
-            {
-                return NotFound();
-            }
-            return View(users);
-            //await _context.Users.Where((p => p.FirstName) is FirstName&& (p => p.LastName is LastName);
-            //    //.FirstOrDefaultAsync(m => m.FirstName == FirstName));
-            //    //can't double lambda?
-            ////    .FirstOrDefaultAsync(m, n => m.FirstName, n.LastName == FirstName && LastName) == null)
-            ////{
-            //    return NotFound();
-            //}
-
-            //return View(await _context.Users
-            //    .include
-            //    .FirstOrDefaultAsync(m=> m.FirstName == FirstName));
-         
-
-
-        }
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

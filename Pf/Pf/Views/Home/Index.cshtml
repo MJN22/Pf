@@ -1,6 +1,7 @@
 ﻿@{
     @model Pf.Models.Users
     ViewData["Title"] = "Home Page";
+
 }
 @*<div>
     <div class="col-md-6"> <BUTTON class="btn-toolbar"></BUTTON></div>
@@ -18,17 +19,25 @@
         Password: <input asp-for="Password" /><br />
         <button type="submit"> Create user</button>
     </form>
-    </div>
+    </div
     }*@
-<div class="col-lg-4">
+@*@{ 
+  var Users = ViewData["user"] as Users;
+}
+<h2>@ViewData["x"]; </h2>
+<h2>@ViewData["user.FirstName"]; </h2>
+<h2>@Users.FirstName; </h2>
+<h3>in class references below razor style</h3>
+<h5>@Model.FirstName</h5>
+<h5>@Model.LastName</h5>
+<h5>@Model.Id</h5>
+<h5>@Model.UserLocation</h5>*@
+<div class="col-lg-auto">
     <div class="card bg-primary text-center card-form">
         <div class="card-body">
-
-            <form id="LoginHome" asp-controller="Users" asp-action="Find" method="get" class="card bg-primary text-center card-form">
+                        <form id="LoginHome" asp-controller="Users" asp-action="Index" method="get" class="card bg-primary text-center card-form">
                 <Label>FirstName:</Label><input asp-for="FirstName " /> <br />
-                LastName:  <input asp-for="LastName" /> <br />
-                Zip Code: <input asp-for="UserLocation" /><br />
-                @*Password: <input asp-for="Password" /><br />*@
+                Password: <input asp-for="Password" /><br />
                 <button type="submit" asp-page=""> Login</button>
             </form>
             <div>
@@ -82,8 +91,8 @@
                     <input type="submit" value="Create New User" class="btn btn-success btn-block">
                 </form>*@
     </div>
-            </div>
-        </div>
+            
+        
        
         <style>
             .container {
