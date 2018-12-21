@@ -38,12 +38,20 @@
     <div class="card bg-primary text-center card-form">
         <div class="card-body ">
             <form id="LoginHome" asp-controller="Users" asp-action="Index" method="get" class="card bg-primary text-center card-form">
-                <Label>User Name:</Label><input class="form-control form-control-lg" asp-for="UserName " /> <br />
-                Password: <input class="form-control form-control-lg" asp-for="Password" /><br />
-                <button type="submit" class="btn btn-outline-light btn-block" asp-page=""> Login</button>
-                <div>
-                    <input type="button" id="FormManager" name="FormManager" value="Create a UserName" class="btn btn-outline-warning btn-outline-success btn-block" onclick="ChangeFormValues()" />
+                <div class="form-group">
+                    <Label asp-for="UserName" class="control-label">Profile User Name</Label>
+            <input asp-for="UserName" class="form-control form-control-lg" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
+                    <button id="homeLoginbtn" onclick="store()" type="submit" class="btn btn-outline-light btn-block" asp-page=""> Login</button>
+                    <div>
+                        <input type="button"  id="FormManager" name="FormManager" value="Create a UserName" class="btn btn-outline-warning btn-outline-success btn-block" />
+                    </div>
             </form>
            
             
