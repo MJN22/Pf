@@ -16,13 +16,17 @@ namespace Pf.Controllers
         public UsersController(PDBContext context)
         {
             _context = context;
-        }
+			//var pDBContext = _context.UserLocation.Include(u => u.User);
+			//return View(await pDBContext.ToListAsync()); wont need this
+		}
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
             return View(await _context.Users.ToListAsync());
-        }
+
+			
+		}
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -53,7 +57,7 @@ namespace Pf.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Password")] Users users)
+        public async Task<IActionResult> Create([Bind("Id, UserName, FirstName,LastName,Password")] Users users)
         {
             if (ModelState.IsValid)
             {
@@ -115,23 +119,24 @@ namespace Pf.Controllers
             return View(users);
         }
 
-        // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		// GET: Users/Delete/5
+		public async Task<IActionResult> Delete(int? id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            var users = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (users == null)
-            {
-                return NotFound();
-            }
+			var users = await _context.Users
+					.FirstOrDefaultAsync(m => m.Id == id);
+			if (users == null)
+			{
+				return NotFound();
+			}
 
-            return View(users);
-        }
+			return View(users);
+		}
+        
 
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -148,5 +153,22 @@ namespace Pf.Controllers
         {
             return _context.Users.Any(e => e.Id == id);
         }
-    }
+		[HttpGet]
+		public async Task<IActionResult> Search(string UserName, [Bind("Id,FirstName,LastName,Password, UserName")] Users users)
+   {
+			//if (UserName == null)
+			//{
+			//	return NotFound();
+			//}
+
+		var user = await _context.Users
+					.FirstOrDefaultAsync(m => m.UserName == UserName);
+			if (users == null)
+			{
+				return NotFound("User not found please go back and try again");
+			}
+
+			return View(users);
+		}
+	}
 }

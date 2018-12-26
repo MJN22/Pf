@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Pf.Models.Users>
 
 @{
-    ViewData["Title"] = "Index";
+  ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
@@ -20,8 +20,11 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
-            </th>*
-            <th></th>
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.UserLocation)
+            </th>*@
+            
         </tr>
     </thead>
     <tbody>
@@ -33,6 +36,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.UserLocation)
+            </td>*@
             @*<td>
                 @Html.DisplayFor(modelItem => item.Password)
             </td>*@
