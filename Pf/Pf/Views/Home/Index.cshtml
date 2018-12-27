@@ -40,22 +40,24 @@
             <form id="LoginHome" asp-controller="Users" asp-action="Index" method="get" class="card bg-primary text-center card-form">
                 <div class="form-group">
                     <Label asp-for="UserName" class="control-label">Profile User Name</Label>
-            <input asp-for="UserName" class="form-control form-control-lg" />
+                    <input asp-for="UserName" class="form-control form-control-lg" required />
                     <span asp-validation-for="UserName" class="text-danger"></span>
-                    </div>
+                </div>
                 <div class="form-group">
                     <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control" />
+                    <input asp-for="Password" class="form-control" required />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
-                    <button id="homeLoginbtn" onclick="store()" type="submit" class="btn btn-outline-light btn-block" asp-page=""> Login</button>
-                    <div>
-                        <input type="button"  id="FormManager" name="FormManager" value="Create a UserName" class="btn btn-outline-warning btn-outline-success btn-block" />
-                    </div>
-            </form>
-           
-            
-        </div>
+                <div> <button id="homeLoginbtn" onclick="store()" type="submit" class="btn btn-outline-light btn-block" asp-page=""> Login</button>
+                @*<div>
+                    <input type="button"  id="FormManager" name="FormManager" value="Create a UserName" class="btn btn-outline-warning btn-outline-success btn-block" />
+                </div>*@
+                <a asp-controller="Users" asp-action="Create" class="btn btn-outline-warning btn-outline-success btn-block">or Create New User</a>
+                </div>
+        </form>
+
+
+    </div>
         </div>
         @*<div class="form-group">
             <input type="text" class="form-control form-control-lg" placeholder="Last Name">

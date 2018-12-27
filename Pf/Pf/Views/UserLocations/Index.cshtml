@@ -19,7 +19,9 @@
                 @Html.DisplayNameFor(model => model.State)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.UserId)
+            </th> <th>
+                @Html.DisplayNameFor(model => model.Orders)
             </th>
             <th></th>
         </tr>
@@ -34,7 +36,9 @@
                 @Html.DisplayFor(modelItem => item.State)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.FirstName)
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td><td>
+                @Html.DisplayFor(modelItem => item.Orders)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

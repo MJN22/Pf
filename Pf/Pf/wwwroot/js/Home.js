@@ -149,6 +149,7 @@ document.getElementById( "homeLoginbtn" ).addEventListener( "submit", ( event ) 
 
 function store()
 {
+	
 	console.log( sessionStorage.length );
 	var inputUser = document.getElementById( "UserName" );
 	sessionStorage.setItem( "UserName", inputUser.value );
@@ -158,5 +159,5 @@ function store()
 	console.warn(sessionStorage.length );
 };
 
-if
+
 
