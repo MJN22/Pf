@@ -5,6 +5,8 @@
 }
 
 <h1>Index</h1>
+<button id="time"> Filter by Time </button>
+<button id="amount"> Filter by amount</button>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -33,7 +35,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OrderTime)
             </td>
-            <td>
+            <td id="total">
                 @Html.DisplayFor(modelItem => item.TotalDue)
             </td>
             <td>

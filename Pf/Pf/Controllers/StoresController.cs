@@ -148,5 +148,24 @@ namespace Pf.Controllers
         {
             return _context.Store.Any(e => e.Id == id);
         }
+
+
+		/// <summary>
+		/// wow it auto complteted this time.. able to search store by location
+		/// </summary>
+		/// <param name="searchString"></param>
+		/// <returns></returns>
+				public async Task<IActionResult> Search(string searchString)
+		{//creates linq query
+			var stores = from s in _context.Store
+									 select s;
+
+			if (!String.IsNullOrEmpty(searchString))
+			{//this is  lambda are used in method based linq queries such as where or contains.  delayed execution
+				stores = stores.Where(s=>s.Address.Contains(searchString));
+			}
+
+			return View(await stores.ToListAsync());
+		}
     }
 }

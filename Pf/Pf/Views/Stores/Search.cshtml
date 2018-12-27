@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Pf.Models.Store>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search for Store by Address</h1>
+
+
+
+<hr />
+<form asp-controller="Stores" asp-action="Search" method="get">
+
+    <p>
+
+        Store Address: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+ 
+ 
+            @*<th>
+                    @Html.DisplayNameFor(model => model.UserLocation)
+                </th>*@
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredients)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.UserLocation)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>*@
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Edit" asp-route-id="">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
