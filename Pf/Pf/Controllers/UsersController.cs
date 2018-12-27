@@ -153,22 +153,19 @@ namespace Pf.Controllers
         {
             return _context.Users.Any(e => e.Id == id);
         }
-		[HttpGet]
-		public async Task<IActionResult> Search(string UserName, [Bind("Id,FirstName,LastName,Password, UserName")] Users users)
-   {
-			//if (UserName == null)
-			//{
-			//	return NotFound();
-			//}
 
-		var user = await _context.Users
-					.FirstOrDefaultAsync(m => m.UserName == UserName);
-			if (users == null)
-			{
-				return NotFound("User not found please go back and try again");
+		public async Task<IActionResult> Search(string searchString)
+		{//creates linq query
+			var users = from u in _context.Users
+									 select u;
+
+			if (!String.IsNullOrEmpty(searchString))
+			{//this is  lambda are used in method based linq queries such as where or contains.  delayed execution
+				users = users.Where(n=> n.FirstName.Contains(searchString));
 			}
 
-			return View(users);
+			return View(await users.ToListAsync());
 		}
 	}
-}
+	}
+
