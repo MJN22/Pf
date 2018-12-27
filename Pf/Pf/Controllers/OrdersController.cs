@@ -161,7 +161,20 @@ namespace Pf.Controllers
         {
             return _context.Orders.Any(e => e.Id == id);
         }
-    }
+
+		public async Task<IActionResult> Search(string searchString)
+		{//creates linq query
+			var orders = from o in _context.Orders
+									select o;
+
+			if (!String.IsNullOrEmpty(searchString))
+			{//this is  lambda are used in method based linq queries such as where or contains.  delayed execution
+				orders = orders.Where(o => o.UserLocation.Equals(searchString));
+			}
+
+			return View(await orders.ToListAsync());
+		}
+	}
 }
 
         //[HttpGet, ActionName("OrderFindAllHistoryLocation")]
